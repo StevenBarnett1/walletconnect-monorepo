@@ -19,8 +19,11 @@ export function deeplinkRedirect(request: RequestParams) {
     try {
       const item = window.localStorage.getItem("WALLETCONNECT_DEEPLINK_CHOICE");
       if (item) {
+        console.log("ITEM: ",item)
         const json = JSON.parse(item);
+        console.log("JSON: ",json)
         const deeplink = json?.href;
+        console.log("DEEPLINK: ",deeplink)
         if (typeof deeplink === "string") {
           if (deeplink.endsWith("/")) deeplink.slice(0, -1);
           const link = `${deeplink}/wc?requestId=${request.id}&sessionTopic=${request.topic}`;
